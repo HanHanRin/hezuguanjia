@@ -1,0 +1,14 @@
+# 依赖和构建产物
+node_modules/
+dist/
+dist-pages/
+data/
+*.log
+.DS_Store
+.env
+.env.local
+.env.*.local
+
+# 编辑器
+.vscode/
+.idea/
