@@ -21,6 +21,7 @@ npm test
 
 echo "==> 打包运行所需文件"
 tar czf "$ARCHIVE" \
+  --exclude '.git' \
   --exclude '.env' \
   --exclude '.env.local' \
   --exclude 'data' \

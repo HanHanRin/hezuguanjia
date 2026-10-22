@@ -99,6 +99,11 @@ textarea::placeholder {
   color: var(--primary);
   font-weight: 600;
 }
+.sidebar a svg {
+  width: 20px;
+  height: 20px;
+  display: block;
+}
 .sidebar .side-bottom {
   margin-top: auto;
   display: flex;
@@ -131,6 +136,11 @@ textarea::placeholder {
 }
 .topbar .spacer {
   flex: 1;
+}
+.topbar .btn svg {
+  width: 20px;
+  height: 20px;
+  display: block;
 }
 .content {
   flex: 1;

@@ -9,6 +9,7 @@ import Pact from './pages/Pact.jsx';
 import Settings from './pages/Settings.jsx';
 import Notifications from './pages/Notifications.jsx';
 import { Avatar, Btn } from './ui.jsx';
+import { STATIC } from './api.js';
 import { visibleNotifs } from './../core/notify.js';
 
 const NAV = [
@@ -31,7 +32,7 @@ function IdentitySwitch({ onSelect }) {
   const { data, act, showToast, api } = useApp();
   const { room, me } = data;
   const mine = room.members.find((m) => m.id === me);
-  if (!room.demo && !window.__STATIC__) return null;
+  if (!room.demo && !STATIC) return null;
   const change = async (id) => {
     if (id === me) return;
     if (room.demo && api.switchDemo) {
@@ -122,7 +123,7 @@ function Shell() {
         <header className="topbar">
           <span className="room-name">{room.name}</span>
           <span className="spacer" />
-          {(room.demo || window.__STATIC__) && <IdentitySwitch />}
+          {(room.demo || STATIC) && <IdentitySwitch />}
           <a href="#/notifications" className="btn subtle small" style={{ position: 'relative' }} aria-label={`通知 ${notifs.length} 条未读`}>
             <Icon d="M12 3a6 6 0 0 0-6 6v4l-2 4h16l-2-4V9a6 6 0 0 0-6-6z M10 20a2 2 0 0 0 4 0" />
             {notifs.length > 0 && (
@@ -131,11 +132,11 @@ function Shell() {
           </a>
         </header>
         <main className="content">
-          {(room.demo || window.__STATIC__) && (
+          {(room.demo || STATIC) && (
             <div className="banner warn">
-              {room.demo
-                ? '演示房间：数据是虚构的，可随便点；7 天没有操作会自动清空。'
-                : '演示版：数据只保存在这台设备的浏览器里，室友之间不会同步。完整版：yuhaipei.cn/hezuguanjia/'}
+              {STATIC
+                ? '纯前端演示版：数据只保存在这台设备的浏览器里，室友之间不同步、没有 AI；当前演示数据是虚构的，可随便点。多人完整版：yuhaipei.cn/hezuguanjia/'
+                : '演示房间：数据是虚构的，可随便点；7 天没有操作会自动清空。'}
             </div>
           )}
           <Page />
